@@ -7,6 +7,7 @@
     <modules>
         <module>Inhausblmoton</module>
         <module>codeforces</module>
+        <module>Dareway Tools</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

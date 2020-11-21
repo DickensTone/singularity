@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int testCase = input.nextInt();
-        int[] nums = new int[10000 + 2];
+        int []nums = new int[10000 + 2];
         while(testCase-- > 0){
             int n;
             n = input.nextInt();
@@ -26,7 +26,7 @@ public class Main {
                 needBlocks += maxN - nums[i];
             }
             needBlocks += minN - maxN;
-            int diff = 0;
+            int diff;
             if(minN >= needBlocks){
                 diff = minN - needBlocks;
                 int extra = diff % (n - 1);
