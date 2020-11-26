@@ -1,40 +1,49 @@
 package addoil;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int testCase = input.nextInt();
-        int[] a = new int[26];
-        int[] b = new int[26];
         while (testCase-- > 0) {
-            for(int i = 0; i < 26; i++){
-                a[i] = b[i] = 0;
-            }
-            int n, k;
-            n = input.nextInt();
-            k = input.nextInt();
-            String stra = input.next();
-            String strb = input.next();
-            for(int i = 0; i < n; i++){
-                a[stra.charAt(i)-'a']++;
-                b[strb.charAt(i)-'a']++;
-            }
-            String ans = "YES";
-            for(int i = 0; i < 26; i++){
-                while(a[i] > b[i] && i != 25){
-                    a[i] -= k;
-                    a[i + 1] += k;
+            long n = input.nextLong();
+            long temp = n;
+            List<Long> factors = new ArrayList<>();
+            int tot = 0, key = 1;
+            for(int i = 2; i < Math.sqrt(n + 1); i++){
+                int cnt = 0;
+                while(temp%i == 0){
+                    factors.add((long) i);
+                    temp = temp / i;
+                    cnt++;
                 }
-                if(a[i] != b[i]){
-                    ans="NO";
+                if(cnt > tot){
+                    tot = cnt;
+                    key = i;
                 }
             }
+            if(temp != 1){
+                factors.add(temp);
+            }
+            if(factors.size() <= 2){
+                tot = 1;
+                System.out.println(tot);
+                System.out.println(n);
+            }else {
 
-                System.out.println(ans);
+                System.out.println(tot);
+
+                for (int i = 1; i < tot; i++) {
+                    System.out.print(key + " ");
+                }
+//            System.out.println(9876543210L/3);
+//            System.out.println((int)Math.pow(key, tot- 1));
+                System.out.println(n / (int) Math.pow(key, tot - 1));
+            }
         }
+
         input.close();
     }
 }
