@@ -3,10 +3,7 @@ package com.dareway.controller;
 import com.dareway.model.SqlFace;
 import com.dareway.service.SqlMagicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CommonController {
@@ -15,7 +12,7 @@ public class CommonController {
     private SqlMagicService sqlMagic;
 
     @CrossOrigin
-    @GetMapping("/getSqlFromJava")
+    @PostMapping("/getSqlFromJava")
     public SqlFace getSqlFromJava(@RequestBody String str){
         SqlFace sqlFace = sqlMagic.doConversion(str);
         return sqlFace;
